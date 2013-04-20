@@ -88,8 +88,4 @@ main = do
     (_, s) <- runCrackle (runCommands $ commands) app
     return ()
     
-    ation myConfig myApplication 
-    (_, s) <- runCrackle (runCommands $ commands) app
-    return ()
-    
     
