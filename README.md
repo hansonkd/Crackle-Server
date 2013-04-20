@@ -72,8 +72,8 @@ We can also make commands that we can run from the command line with our applica
             help    = Nothing,
             options = [],
             command = (\optDict -> do
-                    app <- ask
-                    liftIO $ getSubServer app
+                    subserve <- asks getSubServer
+                    liftIO $ print subserve
                 )
         }
         

@@ -45,11 +45,8 @@ printConfigCommand = Command {
         help    = Nothing,
         options = [],
         command = (\optDict -> do
-                app <- ask
-                liftIO $ print $ getConfig app
-                put $ setShard app BaseApplicationInit
-                app2 <- get
-                liftIO $ print $ app2
+                subserve <- asks getSubServer
+                liftIO $ print $ subserve
             )
     }
 
@@ -88,6 +85,10 @@ myConfig = M.fromList [("SOMECONFIG", "OTHERCONFIG")]
 main :: IO ()
 main = do
     let (app, commands) = initApplication myConfig myApplication 
+    (_, s) <- runCrackle (runCommands $ commands) app
+    return ()
+    
+    ation myConfig myApplication 
     (_, s) <- runCrackle (runCommands $ commands) app
     return ()
     
